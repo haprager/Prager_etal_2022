@@ -1,0 +1,1377 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     50655,       1369]
+NotebookOptionsPosition[     42648,       1235]
+NotebookOutlinePosition[     42994,       1250]
+CellTagsIndexPosition[     42951,       1247]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["New Method", "Chapter",
+ CellChangeTimes->{{3.797710132022291*^9, 
+  3.797710133951045*^9}},ExpressionUUID->"73654864-4cde-4594-9bbb-\
+fa690116b1b8"],
+
+Cell[CellGroupData[{
+
+Cell["M Stars", "Section",
+ CellChangeTimes->{{3.7976539519542*^9, 
+  3.79765395524319*^9}},ExpressionUUID->"4c88c8ed-3efa-42f3-ac04-\
+b3e47725085b"],
+
+Cell[CellGroupData[{
+
+Cell["Fundamental Mode", "Subsection",
+ CellChangeTimes->{{3.797653966435385*^9, 
+  3.7976539690998077`*^9}},ExpressionUUID->"3ffb9aa6-693d-4bd4-9d2e-\
+a8c09b0a60a4"],
+
+Cell[TextData[{
+ "First, M stars in the fundamental mode. Using the relations for logR(logL, \
+logM) and logP(logM,logR), determine functions for logM and log R.\nlogR = \
+-0.241(9) + 0.690(3)logL - 0.251(4)logM ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "0.990"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"4fc18149-5043-4b0c-b326-41a47eeb99a7"],
+ "\nlogP = -2.234(5) - 0.780(2)logM + 2.027(2)logR ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "0.999"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"42c13245-6de0-4727-b307-5ef3300f8dab"]
+}], "Text",
+ CellChangeTimes->{{3.797653722966732*^9, 3.7976537770789475`*^9}, {
+  3.7976547554740615`*^9, 3.797654758362688*^9}, {3.797654827762802*^9, 
+  3.797654922142915*^9}, {3.797655011056776*^9, 3.797655011537214*^9}, {
+  3.797710392741519*^9, 
+  3.797710426282031*^9}},ExpressionUUID->"e5a32356-c9f5-43f6-8c42-\
+dcb37c5221dd"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"logR", "\[Equal]", 
+      RowBox[{
+       RowBox[{"-", "0.241"}], "+", 
+       RowBox[{"0.690", "logL"}], "-", 
+       RowBox[{"0.251", "logM"}]}]}], ",", 
+     RowBox[{"logP", "\[Equal]", 
+      RowBox[{
+       RowBox[{"-", "2.234"}], "-", 
+       RowBox[{"0.780", "logM"}], "+", 
+       RowBox[{"2.027", "logR"}]}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"logR", ",", "logM"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7977104369407225`*^9, 3.797710488377513*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"fee2db81-7eda-4405-89ef-4e714479d42a"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"logR", "\[Rule]", 
+     RowBox[{"0.28923079788047107`", "\[VeryThinSpace]", "+", 
+      RowBox[{"0.41760521797021516`", " ", "logL"}], "+", 
+      RowBox[{"0.1947582863443404`", " ", "logP"}]}]}], ",", 
+    RowBox[{"logM", "\[Rule]", 
+     RowBox[{
+      RowBox[{"-", "2.11247329832857`"}], "+", 
+      RowBox[{"1.0852381754174694`", " ", "logL"}], "-", 
+      RowBox[{"0.7759294276666948`", " ", "logP"}]}]}]}], "}"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.797710488742871*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"3a7fc1e7-2220-4ee4-8f58-19dfd34fb996"]
+}, Open  ]],
+
+Cell["\<\
+So now we have the relations
+logR(logL, logP) = 0.289 + 0.417logL + 0.195logP
+logM(logL,logP) = -2.112 + 1.085logL - 0.776logP\
+\>", "Text",
+ CellChangeTimes->{{3.797710527133794*^9, 
+  3.797710603214983*^9}},ExpressionUUID->"a95010ac-08dc-4bd1-80f2-\
+6a752e18f041"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.79771051437318*^9, 
+  3.797710515932598*^9}},ExpressionUUID->"c050ddec-6699-4866-b92b-\
+718bfa57a960"],
+
+Cell[TextData[{
+ "Assume ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"logMdot", "=", 
+    RowBox[{
+     SubscriptBox["a", "0"], "+", 
+     RowBox[{
+      SubscriptBox["a", "1"], "logM"}], "+", 
+     RowBox[{
+      SubscriptBox["a", "2"], "logL"}], "+", 
+     RowBox[{
+      SubscriptBox["a", "3"], "logR"}], "+", 
+     RowBox[{
+      SubscriptBox["a", "4"], "logP"}]}]}], TraditionalForm]],ExpressionUUID->
+  "f91d2994-4db6-4a24-b908-cdeaff588746"],
+ ". Use functions logP(logM,logR) and logR(logL, logM) to change this to the \
+form ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"logMdot", "=", 
+    RowBox[{"a", "+", 
+     RowBox[{"b", "*", "logL"}], "-", 
+     RowBox[{"c", " ", "logM"}]}]}], TraditionalForm]],ExpressionUUID->
+  "5dbfac44-38a2-4638-a399-ce50aec9c9fd"]
+}], "Text",
+ CellChangeTimes->{{3.7976535826626315`*^9, 
+  3.7976537107105856`*^9}},ExpressionUUID->"2e7ebe31-787f-477c-aba3-\
+525d0e4145ab"],
+
+Cell[TextData[{
+ "First, M stars in the fundamental mode.\nlogR = -0.241(9) + 0.690(3)logL - \
+0.251(4)logM ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "0.990"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"46c59983-759e-413f-8308-27cc36edaa11"],
+ "\nlogP = -2.234(5) - 0.780(2)logM + 2.027(2)logR ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "0.999"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"67d81a9c-d742-4063-a990-10488ca66156"],
+ "\nlogMdot= -3.478 + 1.822 logM - 2.439logL - 1.302logR + 3.706logP ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "0.206"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"c685bd08-9deb-47ee-8520-1ecd82a1e786"],
+ "\n"
+}], "Text",
+ CellChangeTimes->{{3.797653722966732*^9, 3.7976537770789475`*^9}, {
+  3.7976547554740615`*^9, 3.797654758362688*^9}, {3.797654827762802*^9, 
+  3.797654922142915*^9}, {3.797655011056776*^9, 
+  3.797655011537214*^9}},ExpressionUUID->"79e0cf6e-cde3-4d68-9d62-\
+666049c2114c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Expand", "[", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{
+    RowBox[{"-", "3.478"}], "+", 
+    RowBox[{"1.822", "logM"}], "-", 
+    RowBox[{"2.439", "logL"}], "-", 
+    RowBox[{"1.302", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "0.241"}], "+", 
+       RowBox[{"0.690", "logL"}], "-", 
+       RowBox[{"0.251", "logM"}]}], ")"}]}], "+", 
+    RowBox[{"3.706", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "2.234"}], "-", 
+       RowBox[{"0.780", "logM"}], "+", 
+       RowBox[{"2.027", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "0.241"}], "+", 
+          RowBox[{"0.690", "logL"}], "-", 
+          RowBox[{"0.251", "logM"}]}], ")"}]}]}], ")"}]}]}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7976534821314554`*^9, 3.7976535117258797`*^9}, {
+  3.7976537847939625`*^9, 3.79765382550101*^9}, {3.797654467217578*^9, 
+  3.7976544891465235`*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"fbe733df-eb02-479a-a781-f7db68c05e4e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "13.253828942`"}], "+", 
+  RowBox[{"1.8459427800000001`", " ", "logL"}], "-", 
+  RowBox[{"2.627405562`", " ", "logM"}]}]], "Output",
+ CellChangeTimes->{
+  3.7976538272055593`*^9, {3.79765447347727*^9, 3.7976544913555326`*^9}},
+ CellLabel->"Out[6]=",ExpressionUUID->"ad81663b-afed-43b0-804a-5af900f53d2e"]
+}, Open  ]],
+
+Cell["This suggests logMdot = -13.25 + 1.845 logL - 2.627 logM...", "Text",
+ CellChangeTimes->{{3.7976538460136642`*^9, 3.797653881017497*^9}, {
+  3.797654499267727*^9, 
+  3.797654502387564*^9}},ExpressionUUID->"4e141064-d093-4620-bd18-\
+3bbe671bc937"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Overtone Mode", "Subsection",
+ CellChangeTimes->{{3.797653966435385*^9, 
+  3.797653980389075*^9}},ExpressionUUID->"b6c6c98c-d811-4c0b-a9e8-\
+12ca879441bc"],
+
+Cell[TextData[{
+ "Assume ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"logMdot", "=", 
+    RowBox[{
+     SubscriptBox["a", "0"], "+", 
+     RowBox[{
+      SubscriptBox["a", "1"], "logM"}], "+", 
+     RowBox[{
+      SubscriptBox["a", "2"], "logL"}], "+", 
+     RowBox[{
+      SubscriptBox["a", "3"], "logR"}], "+", 
+     RowBox[{
+      SubscriptBox["a", "4"], "logP"}]}]}], TraditionalForm]],ExpressionUUID->
+  "19eba59c-b206-4b76-8f05-be62c9756f15"],
+ ". Use functions logP(logM,logR) and logR(logL, logM) to change this to the \
+form ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"logMdot", "=", 
+    RowBox[{"a", "+", 
+     RowBox[{"b", "*", "logL"}], "-", 
+     RowBox[{"c", " ", "logM"}]}]}], TraditionalForm]],ExpressionUUID->
+  "228530e3-77b4-4404-bde4-817d8aa23de7"]
+}], "Text",
+ CellChangeTimes->{{3.7976535826626315`*^9, 
+  3.7976537107105856`*^9}},ExpressionUUID->"bc203e20-ce23-415f-b7c1-\
+ecf44e238fd5"],
+
+Cell[TextData[{
+ "Next, M stars in the overtone mode. Using the relations for logR(logL, \
+logM) and logP(logM,logR), determine functions for logM and log R.\nlogR = \
+-0.241(9) + 0.690(3)logL - 0.251(4)logM ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "0.990"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"e2c29944-a4cb-4796-8446-7880565bd2fb"],
+ "\nlogP = -1.55428(1) - 0.528686(6)logM + 1.570244(6)logR ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "1"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"517c5e4d-7e36-42e3-ac6e-c262957c6534"],
+ "*"
+}], "Text",
+ CellChangeTimes->{{3.797710932320272*^9, 3.7977109618675623`*^9}, {
+  3.7977317398610964`*^9, 
+  3.797731741276384*^9}},ExpressionUUID->"86f77d21-c306-4d4b-afbb-\
+a52d304ad67a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"logR", "\[Equal]", 
+      RowBox[{
+       RowBox[{"-", "0.241"}], "+", 
+       RowBox[{"0.690", "logL"}], "-", 
+       RowBox[{"0.251", "logM"}]}]}], ",", 
+     RowBox[{"logP", "\[Equal]", 
+      RowBox[{
+       RowBox[{"-", "1.55428"}], "-", 
+       RowBox[{"0.528686", "logM"}], "+", 
+       RowBox[{"1.570244", "logR"}]}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"logR", ",", "logM"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.797710975003511*^9, 3.797710991069153*^9}, {
+  3.7978190223351727`*^9, 3.79781904356248*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"0c0ab346-f56c-4ab6-849b-ff6ff38b4fd5"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"logR", "\[Rule]", 
+     RowBox[{"0.2846836204114106`", "\[VeryThinSpace]", "+", 
+      RowBox[{"0.3953039915235914`", " ", "logL"}], "+", 
+      RowBox[{"0.27199318351706053`", " ", "logP"}]}]}], ",", 
+    RowBox[{"logM", "\[Rule]", 
+     RowBox[{
+      RowBox[{"-", "2.0943570534319145`"}], "+", 
+      RowBox[{"1.1740876831729423`", " ", "logL"}], "-", 
+      RowBox[{"1.0836381813428706`", " ", "logP"}]}]}]}], "}"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.7977109986803865`*^9, 3.7977317596490927`*^9, 
+  3.797819046296968*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"6684bc7a-0dcc-4414-bf91-c14f3eab4639"]
+}, Open  ]],
+
+Cell["\<\
+So now we have the relations
+logR(logL, logP) =0.284684\[VeryThinSpace]+0.395304 logL+0.271993 logP
+logM(logL,logP) = -2.09436+1.17409 logL-1.08364 logP\
+\>", "Text",
+ CellChangeTimes->{{3.797711011576372*^9, 3.7977110473552666`*^9}, {
+  3.797819064332057*^9, 
+  3.797819071230335*^9}},ExpressionUUID->"6abc225c-abec-4c58-a492-\
+9c40a56fabdf"],
+
+Cell[TextData[{
+ "\nlogR = -0.241(9) + 0.690(3)logL - 0.251(4)logM ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "0.990"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"f9870813-59d5-4036-86c3-2e6cf5040e28"],
+ "\nlogP = -1.55428(1) - 0.528686(6)logM + 1.570244(6)logR ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "1"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"837c465c-d4a9-4ae4-aebb-98577793e541"],
+ "*\nlogMdot= -5.039 + 1.938 logM - 2.622logL - 1.081logR + 5.107logP ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "0.343"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"80da6c25-ad83-43b5-a645-8e46cecdadac"],
+ "\n*Test Data to confirm return of results from others\[CloseCurlyQuote] work"
+}], "Text",
+ CellChangeTimes->{{3.797653722966732*^9, 3.7976537770789475`*^9}, {
+  3.79765398495823*^9, 3.797653985846038*^9}, {3.7976540186588864`*^9, 
+  3.797654021787732*^9}, {3.797654075817182*^9, 3.797654104708459*^9}, {
+  3.797654864830518*^9, 3.7976548707999463`*^9}, {3.7976549160631123`*^9, 
+  3.7976549242638435`*^9}, {3.7976550240275736`*^9, 3.7976550246111035`*^9}, {
+  3.797710901290056*^9, 3.797710901890602*^9}, {3.7977109421996765`*^9, 
+  3.7977109473833904`*^9}},ExpressionUUID->"f305c140-6658-4f79-9b13-\
+5da2de107bb9"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Expand", "[", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{
+    RowBox[{"-", "5.039"}], "+", 
+    RowBox[{"1.938", "logM"}], "-", 
+    RowBox[{"2.622", "logL"}], "-", 
+    RowBox[{"1.081", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "0.241"}], "+", 
+       RowBox[{"0.690", "logL"}], "-", 
+       RowBox[{"0.251", "logM"}]}], ")"}]}], "+", 
+    RowBox[{"5.107", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "1.55428"}], "-", 
+       RowBox[{"0.528686", "logM"}], "+", 
+       RowBox[{"1.570244", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "0.241"}], "+", 
+          RowBox[{"0.690", "logL"}], "-", 
+          RowBox[{"0.251", "logM"}]}], ")"}]}]}], ")"}]}]}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7976534821314554`*^9, 3.7976535117258797`*^9}, {
+  3.7976537847939625`*^9, 3.79765382550101*^9}, {3.797654034177*^9, 
+  3.797654046550252*^9}, {3.7976541092806177`*^9, 3.7976541354484167`*^9}, {
+  3.7976545095580854`*^9, 3.7976545105650005`*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"74a0c861-2c22-4d58-95f5-7a5372d22e5b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "14.648822862028`"}], "+", 
+  RowBox[{"2.1653829145199994`", " ", "logL"}], "-", 
+  RowBox[{"2.503496665108`", " ", "logM"}]}]], "Output",
+ CellChangeTimes->{3.7976538272055593`*^9, 3.797654050344703*^9, 
+  3.7976541360789895`*^9, 3.797654511572917*^9},
+ CellLabel->"Out[7]=",ExpressionUUID->"646eda92-21ad-43ee-b38d-a54925d300af"]
+}, Open  ]],
+
+Cell["This suggests logMdot = -14.64 + 2.165 logL - 2.503 logM...", "Text",
+ CellChangeTimes->{{3.7976538460136642`*^9, 3.797653881017497*^9}, {
+  3.79765414304834*^9, 3.797654155418579*^9}, {3.7976545142123184`*^9, 
+  3.797654515908861*^9}},ExpressionUUID->"ff934d4c-a9ec-4f11-a6e9-\
+e634bbdb5752"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["C Stars", "Section",
+ CellChangeTimes->{{3.7976539519542*^9, 3.79765395524319*^9}, {
+  3.797654164812123*^9, 
+  3.797654165091376*^9}},ExpressionUUID->"22e5bee1-18c7-4222-b5fb-\
+f22cc227e142"],
+
+Cell[CellGroupData[{
+
+Cell["Fundamental Mode", "Subsection",
+ CellChangeTimes->{{3.797653966435385*^9, 
+  3.7976539690998077`*^9}},ExpressionUUID->"9902b42a-d6d1-477f-8c2f-\
+fa822a2c3410"],
+
+Cell[TextData[{
+ "Next, C stars in the fundamental mode. Using the relations for logR(logL, \
+logM) and logP(logM,logR), determine functions for logM and log R.\nlogR = \
+-0.323(27) + 0.737(7)logL - 0.371(14)logM ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "0.907"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"30080ce9-0955-40b9-a4d6-da1937a0226d"],
+ "\nlogP = -2.285(7) - 0.826(4)logM + 2.043(3)logR ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "0.998"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"7fb3b31e-a294-4169-b58f-216562cd729a"]
+}], "Text",
+ CellChangeTimes->{{3.797710914292877*^9, 3.7977109258534*^9}, {
+  3.79771106443182*^9, 
+  3.7977110716623955`*^9}},ExpressionUUID->"27023e07-1bf2-4047-a238-\
+bb823964506a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"logR", "\[Equal]", 
+      RowBox[{
+       RowBox[{"-", "0.323"}], "+", 
+       RowBox[{"0.737", "logL"}], "-", 
+       RowBox[{"0.371", "logM"}]}]}], ",", 
+     RowBox[{"logP", "\[Equal]", 
+      RowBox[{
+       RowBox[{"-", "2.285"}], "-", 
+       RowBox[{"0.826", "logM"}], "+", 
+       RowBox[{"2.043", "logR"}]}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"logR", ",", "logM"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7977111149878807`*^9, 3.79771114213498*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"e78859ff-4240-4ade-863a-eddc086b367e"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"logR", "\[Rule]", 
+     RowBox[{"0.366764039084493`", "\[VeryThinSpace]", "+", 
+      RowBox[{"0.3843308482006725`", " ", "logL"}], "+", 
+      RowBox[{"0.23422412154906108`", " ", "logP"}]}]}], ",", 
+    RowBox[{"logM", "\[Rule]", 
+     RowBox[{
+      RowBox[{"-", "1.8592022616832695`"}], "+", 
+      RowBox[{"0.9505907056585647`", " ", "logL"}], "-", 
+      RowBox[{"0.6313318640136417`", " ", "logP"}]}]}]}], "}"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.797711143955449*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"010432fb-ad59-4d87-b983-4f35ecb4777e"]
+}, Open  ]],
+
+Cell["\<\
+So now we have the relations
+logR(logL, logP) = 0.367 + 0.384logL + 0.234logP
+logM(logL,logP) = -1.859 + 0.951logL - 0.631logP\
+\>", "Text",
+ CellChangeTimes->{{3.797711011576372*^9, 3.7977110473552666`*^9}, {
+  3.7977111581367674`*^9, 
+  3.797711199253637*^9}},ExpressionUUID->"b01317aa-7f89-4814-99c3-\
+253710c7694b"],
+
+Cell[TextData[{
+ "Assume ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"logMdot", "=", 
+    RowBox[{
+     SubscriptBox["a", "0"], "+", 
+     RowBox[{
+      SubscriptBox["a", "1"], "logM"}], "+", 
+     RowBox[{
+      SubscriptBox["a", "2"], "logL"}], "+", 
+     RowBox[{
+      SubscriptBox["a", "3"], "logR"}], "+", 
+     RowBox[{
+      SubscriptBox["a", "4"], "logP"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "2f355cd8-f557-468b-bd31-c89bd4b606f8"],
+ ". Use functions logP(logM,logR) and logR(logL, logM) to change this to the \
+form ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"logMdot", "=", 
+    RowBox[{"a", "+", 
+     RowBox[{"b", "*", "logL"}], "-", 
+     RowBox[{"c", " ", "logM"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "2f0a350d-5087-42c4-8c8d-d5d89d1a65d7"]
+}], "Text",
+ CellChangeTimes->{{3.7976535826626315`*^9, 
+  3.7976537107105856`*^9}},ExpressionUUID->"b9dfb13d-5d94-4e58-a6ee-\
+99517d4b05bb"],
+
+Cell[TextData[{
+ "logR = -0.323(27) + 0.737(7)logL - 0.371(14)logM ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "0.907"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"a5c98072-5ca0-43ab-ad04-2cfbe9c81a18"],
+ "\nlogP = -2.285(7) - 0.826(4)logM + 2.043(3)logR ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "0.998"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"f2ac8eca-f8e5-4577-ab42-1f764e4b3358"],
+ "\nlogMdot= -5.141 + 2.859 logM - 3.201logL - 1.759logR + 5.791logP ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "0.421"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"928dd4e5-c10f-4f71-9e9c-170ab578be87"]
+}], "Text",
+ CellChangeTimes->{{3.797653722966732*^9, 3.7976537770789475`*^9}, {
+  3.797654198070795*^9, 3.7976542336051197`*^9}, {3.7976543282071543`*^9, 
+  3.797654372627553*^9}, {3.7976549261095223`*^9, 3.797654928503701*^9}, {
+  3.7976549828371134`*^9, 3.7976549983272*^9}, {3.797655030491452*^9, 
+  3.7976550307947273`*^9}, {3.797711099633896*^9, 
+  3.797711101306417*^9}},ExpressionUUID->"950ae7af-4910-4cae-85d1-\
+e8759892fa30"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Expand", "[", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{
+    RowBox[{"-", "5.141"}], "+", 
+    RowBox[{"2.859", "logM"}], "-", 
+    RowBox[{"3.201", "logL"}], "-", 
+    RowBox[{"1.759", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "0.323"}], "+", 
+       RowBox[{"0.737", "logL"}], "-", 
+       RowBox[{"0.371", "logM"}]}], ")"}]}], "+", 
+    RowBox[{"5.791", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "2.285"}], "-", 
+       RowBox[{"0.826", "logM"}], "+", 
+       RowBox[{"2.043", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "0.323"}], "+", 
+          RowBox[{"0.737", "logL"}], "-", 
+          RowBox[{"0.371", "logM"}]}], ")"}]}]}], ")"}]}]}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7976534821314554`*^9, 3.7976535117258797`*^9}, {
+  3.7976537847939625`*^9, 3.79765382550101*^9}, {3.7976543813835154`*^9, 
+  3.7976544621599784`*^9}},
+ CellLabel->"In[8]:=",ExpressionUUID->"41592982-f05b-4bf3-9f31-f850a4552eb8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "21.626695199000007`"}], "+", 
+  RowBox[{"4.222073581000001`", " ", "logL"}], "-", 
+  RowBox[{"5.661082823000002`", " ", "logM"}]}]], "Output",
+ CellChangeTimes->{3.7976538272055593`*^9, 3.7976545253494487`*^9},
+ CellLabel->"Out[8]=",ExpressionUUID->"479563d3-bf56-4900-9468-99d862662574"]
+}, Open  ]],
+
+Cell["This suggests logMdot = -21.62 + 4.222 logL - 5.661 logM...", "Text",
+ CellChangeTimes->{{3.7976538460136642`*^9, 3.797653881017497*^9}, {
+  3.7976545291028624`*^9, 
+  3.7976545411277976`*^9}},ExpressionUUID->"a358b8f9-e32e-45a5-bec0-\
+44328a04eae4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Overtone Mode", "Subsection",
+ CellChangeTimes->{{3.797653966435385*^9, 
+  3.797653980389075*^9}},ExpressionUUID->"2fafa3d0-0e48-4358-a06d-\
+d2b4a3d2f162"],
+
+Cell[TextData[{
+ "Finally, C stars in the overtone mode. Using the relations for logR(logL, \
+logM) and logP(logM,logR), determine functions for logM and log R.\nlogR = \
+-0.323(27) + 0.737(7)logL - 0.371(14)logM ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "0.907"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"c84cae75-17b9-4e6b-9b46-2fbc5df3101f"],
+ "\nlogP = -1.55431(1) - 0.528676(6)logM + 1.570255(6)logR ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "1"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"f29f9cc3-b5a4-4369-8d12-c7810334cbe6"],
+ "*"
+}], "Text",
+ CellChangeTimes->{{3.797710914292877*^9, 3.7977109258534*^9}, {
+  3.79771106443182*^9, 3.7977110716623955`*^9}, {3.7977112200965853`*^9, 
+  3.797711233515789*^9}},ExpressionUUID->"3c866395-46b4-4791-8cf8-\
+10c79add0c93"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"logR", "\[Equal]", 
+      RowBox[{
+       RowBox[{"-", "0.323"}], "+", 
+       RowBox[{"0.737", "logL"}], "-", 
+       RowBox[{"0.371", "logM"}]}]}], ",", 
+     RowBox[{"logP", "\[Equal]", 
+      RowBox[{
+       RowBox[{"-", "1.554"}], "-", 
+       RowBox[{"0.529", "logM"}], "+", 
+       RowBox[{"1.570", "logR"}]}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"logR", ",", "logM"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7977111149878807`*^9, 3.79771114213498*^9}, 
+   3.797711250861581*^9},
+ CellLabel->"In[4]:=",ExpressionUUID->"605b7afd-8c1b-4bea-a5e2-0e40d4ca9c63"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"logR", "\[Rule]", 
+     RowBox[{"0.36498241068134984`", "\[VeryThinSpace]", "+", 
+      RowBox[{"0.3507724005146337`", " ", "logL"}], "+", 
+      RowBox[{"0.33379218512420483`", " ", "logP"}]}]}], ",", 
+    RowBox[{"logM", "\[Rule]", 
+     RowBox[{
+      RowBox[{"-", "1.8544000287907003`"}], "+", 
+      RowBox[{"1.041044742548157`", " ", "logL"}], "-", 
+      RowBox[{"0.8997093938657812`", " ", "logP"}]}]}]}], "}"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.797711143955449*^9, 3.797711269360424*^9},
+ CellLabel->"Out[4]=",ExpressionUUID->"7baab901-d1f5-4a0b-9c2f-e506ba7ff74b"]
+}, Open  ]],
+
+Cell["\<\
+So now we have the relations
+logR(logL, logP) = 0.365 + 0.351logL + 0.334logP
+logM(logL,logP) = -1.854 + 1.041logL - 0.900logP\
+\>", "Text",
+ CellChangeTimes->{{3.797711011576372*^9, 3.7977110473552666`*^9}, {
+  3.7977111581367674`*^9, 3.797711199253637*^9}, {3.797711273662372*^9, 
+  3.7977113074502773`*^9}},ExpressionUUID->"9d6a585b-8922-4c1c-8b51-\
+47cf04bf8023"],
+
+Cell[TextData[{
+ "Assume ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"logMdot", "=", 
+    RowBox[{
+     SubscriptBox["a", "0"], "+", 
+     RowBox[{
+      SubscriptBox["a", "1"], "logM"}], "+", 
+     RowBox[{
+      SubscriptBox["a", "2"], "logL"}], "+", 
+     RowBox[{
+      SubscriptBox["a", "3"], "logR"}], "+", 
+     RowBox[{
+      SubscriptBox["a", "4"], "logP"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "6906bd24-48d1-4571-a064-3fac15094fe3"],
+ ". Use functions logP(logM,logR) and logR(logL, logM) to change this to the \
+form ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"logMdot", "=", 
+    RowBox[{"a", "+", 
+     RowBox[{"b", "*", "logL"}], "-", 
+     RowBox[{"c", " ", "logM"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "5e2778d4-6d79-445b-a7fb-f85fe16bcaad"]
+}], "Text",
+ CellChangeTimes->{{3.7976535826626315`*^9, 
+  3.7976537107105856`*^9}},ExpressionUUID->"4869e9c4-3f87-479f-9256-\
+1815d5bda279"],
+
+Cell[TextData[{
+ "logR = -0.323(27) + 0.737(7)logL - 0.371(14)logM ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "0.907"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"3125545c-6611-4d78-9eaa-5944e31c0025"],
+ "\nlogP = -1.55431(1) - 0.528676(6)logM + 1.570255(6)logR ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "1"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"558916ae-78c1-4e05-821f-f96cce259be7"],
+ "*\nlogMdot= -5.204 + 2.626 logM - 2.547logL - 1.170logR + 4.857logP ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["R", "2"], "=", "0.382"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"d0aef514-3f7f-483c-8651-0013fc033161"],
+ "\n*Test Data to confirm return of results from others\[CloseCurlyQuote] work"
+}], "Text",
+ CellChangeTimes->{{3.797653722966732*^9, 3.7976537770789475`*^9}, {
+  3.79765398495823*^9, 3.797653985846038*^9}, {3.7976540186588864`*^9, 
+  3.797654021787732*^9}, {3.797654075817182*^9, 3.797654104708459*^9}, {
+  3.797654236300572*^9, 3.797654254069731*^9}, {3.797654557353554*^9, 
+  3.7976545579781218`*^9}, {3.7976546073603287`*^9, 3.797654649133334*^9}, {
+  3.797654930110162*^9, 3.797654946049658*^9}, {3.7976549932786083`*^9, 
+  3.7976549946318393`*^9}, {3.797655035796274*^9, 3.7976550368202057`*^9}, {
+  3.797711217103861*^9, 
+  3.7977112180957623`*^9}},ExpressionUUID->"4f69c8d9-0dfe-4c4e-8431-\
+c90cc09a936b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Expand", "[", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{
+    RowBox[{"-", "5.204"}], "+", 
+    RowBox[{"2.626", "logM"}], "-", 
+    RowBox[{"2.547", "logL"}], "-", 
+    RowBox[{"1.170", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "0.323"}], "+", 
+       RowBox[{"0.737", "logL"}], "-", 
+       RowBox[{"0.371", "logM"}]}], ")"}]}], "+", 
+    RowBox[{"4.857", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "1.55431"}], "-", 
+       RowBox[{"0.528676", "logM"}], "+", 
+       RowBox[{"1.570255", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "0.323"}], "+", 
+          RowBox[{"0.737", "logL"}], "-", 
+          RowBox[{"0.371", "logM"}]}], ")"}]}]}], ")"}]}]}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7976534821314554`*^9, 3.7976535117258797`*^9}, {
+  3.7976537847939625`*^9, 3.79765382550101*^9}, {3.797654034177*^9, 
+  3.797654046550252*^9}, {3.7976541092806177`*^9, 3.7976541354484167`*^9}, {
+  3.797654653679469*^9, 3.7976547323360105`*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"9dade358-7166-4c15-b4da-d57b5dda2704"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "14.838806986804999`"}], "+", 
+  RowBox[{"2.2116089302950006`", " ", "logL"}], "-", 
+  RowBox[{"2.337225618485`", " ", "logM"}]}]], "Output",
+ CellChangeTimes->{3.7976538272055593`*^9, 3.797654050344703*^9, 
+  3.7976541360789895`*^9, 3.797654734177685*^9},
+ CellLabel->"Out[9]=",ExpressionUUID->"0b03c489-9cbc-462b-b45f-64b4c09dd5c9"]
+}, Open  ]],
+
+Cell["This suggests logMdot = -14.83 + 2.211 logL - 2.337 logM...", "Text",
+ CellChangeTimes->{{3.7976538460136642`*^9, 3.797653881017497*^9}, {
+  3.79765414304834*^9, 3.797654155418579*^9}, {3.79765473695922*^9, 
+  3.7976547504244695`*^9}},ExpressionUUID->"40f7c6eb-8f5b-458b-8a42-\
+1b6588aebe77"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Old Method (Iben RLM and Ostlie&Cox PMR)", "Chapter",
+ CellChangeTimes->{{3.7977101413597827`*^9, 
+  3.7977101641785345`*^9}},ExpressionUUID->"1ebd2f75-c4e1-4538-ad3e-\
+da2be799e25d"],
+
+Cell[CellGroupData[{
+
+Cell["M Stars", "Section",
+ CellChangeTimes->{{3.7976539519542*^9, 
+  3.79765395524319*^9}},ExpressionUUID->"05d86acf-866d-420f-9185-\
+a2ac7f190aba"],
+
+Cell[CellGroupData[{
+
+Cell["Fundamental Mode", "Subsection",
+ CellChangeTimes->{{3.797653966435385*^9, 
+  3.7976539690998077`*^9}},ExpressionUUID->"3dd6c63a-6795-412f-83da-\
+b399fa266957"],
+
+Cell["\<\
+Using the functions logR(log L, log M) and logP(logM, logR), determine \
+relations for logR and log P.\
+\>", "Text",
+ CellChangeTimes->{{3.7976535826626315`*^9, 3.7976537107105856`*^9}, {
+  3.7977102195208635`*^9, 
+  3.7977102594211583`*^9}},ExpressionUUID->"a72d776b-f828-4a49-872a-\
+90d0c9faf8e6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "0.115"}], "+", "0.0898"}]], "Input",
+ CellChangeTimes->{{3.7977188698119545`*^9, 3.7977188867570853`*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"aa09a148-16fb-4fd7-b5fd-30bc3f9b34f3"],
+
+Cell[BoxData[
+ RowBox[{"-", "0.0252`"}]], "Output",
+ CellChangeTimes->{3.797718887392663*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"d0885675-4ca9-4e81-a2d6-df89f2196349"]
+}, Open  ]],
+
+Cell[TextData[{
+ "logR ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"=", 
+    RowBox[{
+     RowBox[{"-", "0.115"}], "+", 
+     RowBox[{"0.68", "logL"}], "+", 
+     RowBox[{"0.088", 
+      RowBox[{"log", "(", 
+       RowBox[{"Z", "/", 
+        SubscriptBox["Z", "\[Sun]"]}], ")"}]}], "-", 
+     RowBox[{"0.52", "log\[Alpha]"}], "+", 
+     RowBox[{"s", "(", 
+      RowBox[{"0.0252", "-", 
+       RowBox[{"0.31", "logM"}]}], ")"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "f878c22a-af12-42b8-b908-6bff76288337"],
+ " (s=0 if M<1.175, 1 if M>1.175)\nlogP = -1.92 - 0.73logM +1.86logR"
+}], "Text",
+ CellChangeTimes->{{3.797653722966732*^9, 3.7976537770789475`*^9}, {
+  3.7976547554740615`*^9, 3.797654758362688*^9}, {3.797654827762802*^9, 
+  3.797654922142915*^9}, {3.797655011056776*^9, 3.797655011537214*^9}, {
+  3.7977102650382576`*^9, 3.7977103196450443`*^9}, {3.797718778436965*^9, 
+  3.7977188548663635`*^9}, {3.797718893278042*^9, 
+  3.797718994105254*^9}},ExpressionUUID->"cf009df4-df75-4de4-bd45-\
+9aa88e3afff3"],
+
+Cell["For the case of M<1.175,", "Text",
+ CellChangeTimes->{{3.7977194021009893`*^9, 
+  3.7977194095627747`*^9}},ExpressionUUID->"927fb68e-d33d-4d6a-bb28-\
+9d5449860ceb"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"logR", "\[Equal]", 
+      RowBox[{
+       RowBox[{"-", "0.115"}], "+", 
+       RowBox[{"0.68", "logL"}], "+", 
+       RowBox[{"0.088", "logZ"}], "-", 
+       RowBox[{"0.52", "log\[Alpha]"}]}]}], ",", 
+     RowBox[{"logP", "\[Equal]", 
+      RowBox[{
+       RowBox[{"-", "1.92"}], "-", 
+       RowBox[{"0.73", "logM"}], "+", 
+       RowBox[{"1.86", "logR"}]}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"logR", ",", "logM"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.797719411261319*^9, 3.7977195091915493`*^9}, {
+  3.7977205341383657`*^9, 3.7977205387375507`*^9}},
+ CellLabel->"In[10]:=",ExpressionUUID->"f7103339-4ee0-4759-8a0c-ca08ebc53881"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"logR", "\[Rule]", 
+     RowBox[{
+      RowBox[{"-", "0.115`"}], "+", 
+      RowBox[{"0.68`", " ", "logL"}], "+", 
+      RowBox[{"0.088`", " ", "logZ"}], "-", 
+      RowBox[{"0.52`", " ", "log\[Alpha]"}]}]}], ",", 
+    RowBox[{"logM", "\[Rule]", 
+     RowBox[{
+      RowBox[{"-", "2.9231506849315068`"}], "+", 
+      RowBox[{"1.7326027397260277`", " ", "logL"}], "-", 
+      RowBox[{"1.36986301369863`", " ", "logP"}], "+", 
+      RowBox[{"0.2242191780821918`", " ", "logZ"}], "-", 
+      RowBox[{"1.3249315068493153`", " ", "log\[Alpha]"}]}]}]}], "}"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.7977195103328524`*^9, 3.797720539411173*^9},
+ CellLabel->"Out[10]=",ExpressionUUID->"5108bc16-b897-4072-aefe-ec72d3a87e24"]
+}, Open  ]],
+
+Cell["This tells us the relations for logR and logM are", "Text",
+ CellChangeTimes->{{3.7977205160238905`*^9, 
+  3.797720545473689*^9}},ExpressionUUID->"56c66861-dd7e-46f0-9780-\
+6364f49c6994"],
+
+Cell[TextData[{
+ "logR = -0.115 + 0.68logL + 0.088 ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"log", "(", 
+     RowBox[{"Z", "/", 
+      SubscriptBox["Z", "\[Sun]"]}], ")"}], "-", 
+    RowBox[{"0.52", "log\[Alpha]"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "05e233f6-6640-48b7-8bb0-b572483dd53e"],
+ "\nlogM = -2.923 + 1.732logL - 1.370 log P + 0.224 ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"log", "(", 
+    RowBox[{"Z", "/", 
+     SubscriptBox["Z", "\[Sun]"]}], ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "08c8b8fc-1f87-4793-94b6-12280b552b5f"],
+ " - 1.325 log\[Alpha]"
+}], "Text",
+ CellChangeTimes->{{3.7977205549382963`*^9, 3.7977205835583305`*^9}, {
+  3.7977206203141603`*^9, 
+  3.797720667736801*^9}},ExpressionUUID->"57a6d28a-fa6d-4169-81ac-\
+24c7e5fd9dcb"],
+
+Cell["For the case of M>1.175,", "Text",
+ CellChangeTimes->{{3.797719519922573*^9, 
+  3.7977195280892916`*^9}},ExpressionUUID->"39b5eae9-a937-4f05-b9d4-\
+0bcecd513399"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"logR", "\[Equal]", 
+      RowBox[{
+       RowBox[{"-", "0.115"}], "+", 
+       RowBox[{"0.68", "logL"}], "+", 
+       RowBox[{"0.088", "logZ"}], "-", 
+       RowBox[{"0.52", "log\[Alpha]"}], "+", 
+       RowBox[{"1", 
+        RowBox[{"(", 
+         RowBox[{"0.0252", "-", 
+          RowBox[{"0.31", "logM"}]}], ")"}]}]}]}], ",", 
+     RowBox[{"logP", "\[Equal]", 
+      RowBox[{
+       RowBox[{"-", "1.92"}], "-", 
+       RowBox[{"0.73", "logM"}], "+", 
+       RowBox[{"1.86", "logR"}]}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"logR", ",", "logM"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.797719543922858*^9, 3.7977195475956535`*^9}, {
+  3.7977205962899094`*^9, 3.7977206136831236`*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"ec53da39-247b-41bc-8321-786f635dda09"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"logR", "\[Rule]", 
+     RowBox[{"0.4053620082657278`", "\[VeryThinSpace]", "+", 
+      RowBox[{"0.3799173427215674`", " ", "logL"}], "+", 
+      RowBox[{"0.23725700290831164`", " ", "logP"}], "+", 
+      RowBox[{"0.049165773763967545`", " ", "logZ"}], "-", 
+      RowBox[{"0.290525026787081`", " ", "log\[Alpha]"}]}]}], ",", 
+    RowBox[{"logM", "\[Rule]", 
+     RowBox[{
+      RowBox[{"-", "1.5972968008571864`"}], "+", 
+      RowBox[{"0.9680085718659116`", " ", "logL"}], "-", 
+      RowBox[{"0.7653451706719729`", " ", "logP"}], "+", 
+      RowBox[{"0.12527169753558856`", " ", "logZ"}], "-", 
+      RowBox[{"0.7402418490739324`", " ", "log\[Alpha]"}]}]}]}], "}"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.7977195492402415`*^9, {3.797720601786908*^9, 3.797720615565836*^9}},
+ CellLabel->"Out[13]=",ExpressionUUID->"e269fe8a-98b0-41c0-a0c5-2116a8393947"]
+}, Open  ]],
+
+Cell["This tells us the relations for logR and logM are", "Text",
+ CellChangeTimes->{{3.7977205160238905`*^9, 
+  3.797720545473689*^9}},ExpressionUUID->"74df1c5b-dc2d-4663-af45-\
+dfd9fa160751"],
+
+Cell["\<\
+logR = 0.405 + 0.380logL + 0.237logP+0.049log(Z/Zsun)-0.291log(alpha)
+logM = -1.597 + 0.968logL - 0.765logP + 0.125log(Z/Zsun) - 0.750log(alpha)\
+\>", "Text",
+ CellChangeTimes->{{3.7977205549382963`*^9, 3.7977205835583305`*^9}, {
+  3.7977206203141603`*^9, 3.797720667736801*^9}, {3.7977207555869365`*^9, 
+  3.79772083926886*^9}},ExpressionUUID->"72d97a7f-7f6f-48ce-ac54-\
+8a83d8ff8afc"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Overtone Mode", "Subsection",
+ CellChangeTimes->{{3.797653966435385*^9, 
+  3.797653980389075*^9}},ExpressionUUID->"5fb721ef-b607-4035-9df4-\
+bc3133a6133a"],
+
+Cell["\<\
+Using the functions logR(log L, log M) and logP(logM, logR), determine \
+relations for logR and log P.\
+\>", "Text",
+ CellChangeTimes->{{3.7976535826626315`*^9, 3.7976537107105856`*^9}, 
+   3.797710301323372*^9},ExpressionUUID->"74a72528-e764-47a1-9026-\
+5511684532d1"],
+
+Cell[TextData[{
+ "Next, M stars in the overtone mode.\nlogR ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"=", 
+    RowBox[{
+     RowBox[{"-", "0.115"}], "+", 
+     RowBox[{"0.68", "logL"}], "+", 
+     RowBox[{"0.088", 
+      RowBox[{"log", "(", 
+       RowBox[{"Z", "/", 
+        SubscriptBox["Z", "\[Sun]"]}], ")"}]}], "-", 
+     RowBox[{"0.52", "log\[Alpha]"}], "+", 
+     RowBox[{"s", "(", 
+      RowBox[{"0.0252", "-", 
+       RowBox[{"0.31", "logM"}]}], ")"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "5027a522-546f-4c5b-9600-e1897f8bf556"],
+ " (s=0 if M<1.175, 1 if M>1.175)\nlogP = -1.60 - 0.51logM + 1.59logR"
+}], "Text",
+ CellChangeTimes->{{3.797653722966732*^9, 3.7976537770789475`*^9}, {
+   3.79765398495823*^9, 3.797653985846038*^9}, {3.7976540186588864`*^9, 
+   3.797654021787732*^9}, {3.797654075817182*^9, 3.797654104708459*^9}, {
+   3.797654864830518*^9, 3.7976548707999463`*^9}, {3.7976549160631123`*^9, 
+   3.7976549242638435`*^9}, {3.7976550240275736`*^9, 
+   3.7976550246111035`*^9}, {3.7977102105206785`*^9, 3.797710211240333*^9}, {
+   3.797710306266876*^9, 3.7977103488165827`*^9}, 
+   3.797719399043208*^9},ExpressionUUID->"1419adaf-ef55-45cc-9d76-\
+1e7a9930f93f"],
+
+Cell["For the case of M<1.175,", "Text",
+ CellChangeTimes->{{3.7977194021009893`*^9, 
+  3.7977194095627747`*^9}},ExpressionUUID->"cc49d453-f32e-4fd2-8385-\
+de0572320ab0"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"logR", "\[Equal]", 
+      RowBox[{
+       RowBox[{"-", "0.115"}], "+", 
+       RowBox[{"0.68", "logL"}], "+", 
+       RowBox[{"0.088", "logZ"}], "-", 
+       RowBox[{"0.52", "log\[Alpha]"}]}]}], ",", 
+     RowBox[{"logP", "\[Equal]", 
+      RowBox[{
+       RowBox[{"-", "1.60"}], "-", 
+       RowBox[{"0.51", "logM"}], "+", 
+       RowBox[{"1.59", "logR"}]}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"logR", ",", "logM"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.797719411261319*^9, 3.7977195091915493`*^9}, 
+   3.797719561854624*^9, 3.797720882443536*^9},
+ CellLabel->"In[15]:=",ExpressionUUID->"7a67d453-5877-4302-9747-4f4a3ff63016"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"logR", "\[Rule]", 
+     RowBox[{
+      RowBox[{"-", "0.115`"}], "+", 
+      RowBox[{"0.68`", " ", "logL"}], "+", 
+      RowBox[{"0.088`", " ", "logZ"}], "-", 
+      RowBox[{"0.52`", " ", "log\[Alpha]"}]}]}], ",", 
+    RowBox[{"logM", "\[Rule]", 
+     RowBox[{
+      RowBox[{"-", "3.49578431372549`"}], "+", 
+      RowBox[{"2.12`", " ", "logL"}], "-", 
+      RowBox[{"1.9607843137254901`", " ", "logP"}], "+", 
+      RowBox[{"0.2743529411764706`", " ", "logZ"}], "-", 
+      RowBox[{"1.6211764705882354`", " ", "log\[Alpha]"}]}]}]}], "}"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.79772089531124*^9},
+ CellLabel->"Out[15]=",ExpressionUUID->"1f319b41-80c7-43e7-b99e-4ecc897c1549"]
+}, Open  ]],
+
+Cell["This tells us the relations for logR and logM are", "Text",
+ CellChangeTimes->{{3.7977205160238905`*^9, 
+  3.797720545473689*^9}},ExpressionUUID->"236da54f-a756-4770-9400-\
+1f59df0155a5"],
+
+Cell["\<\
+logR = -0.115+0.68 logL+0.088 log(Z/Zsun)-0.52 log(alpha)
+logM = -3.49578+2.12 logL-1.96078 logP+0.274353 log(Z/Zsun)-1.62118 log(alpha)\
+\>", "Text",
+ CellChangeTimes->{{3.7977205549382963`*^9, 3.7977205835583305`*^9}, {
+  3.7977206203141603`*^9, 3.797720667736801*^9}, {3.7977209467456107`*^9, 
+  3.7977209717245207`*^9}, {3.797721049647925*^9, 
+  3.7977210819858365`*^9}},ExpressionUUID->"c5679a49-3745-408a-96aa-\
+f96f8e542714"],
+
+Cell["For the case of M>1.175,", "Text",
+ CellChangeTimes->{{3.797719519922573*^9, 
+  3.7977195280892916`*^9}},ExpressionUUID->"a8080819-0f19-4126-af4b-\
+83845ed651f1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"logR", "\[Equal]", 
+      RowBox[{
+       RowBox[{"-", "0.115"}], "+", 
+       RowBox[{"0.68", "logL"}], "+", 
+       RowBox[{"0.088", "logZ"}], "-", 
+       RowBox[{"0.52", "log\[Alpha]"}], "+", "0.0252", "-", 
+       RowBox[{"0.31", "logM"}]}]}], ",", 
+     RowBox[{"logP", "\[Equal]", 
+      RowBox[{
+       RowBox[{"-", "1.60"}], "-", 
+       RowBox[{"0.51", "logM"}], "+", 
+       RowBox[{"1.59", "logR"}]}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"logR", ",", "logM"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.797719543922858*^9, 3.7977195664708214`*^9}, 
+   3.7977208841871214`*^9},
+ CellLabel->"In[17]:=",ExpressionUUID->"c5bd6eed-af01-4412-ab89-89ac6965ce5d"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"logR", "\[Rule]", 
+     RowBox[{"0.44890018945059335`", "\[VeryThinSpace]", "+", 
+      RowBox[{"0.34579718815435245`", " ", "logL"}], "+", 
+      RowBox[{"0.30910359956127237`", " ", "logP"}], "+", 
+      RowBox[{"0.04475022434938678`", " ", "logZ"}], "-", 
+      RowBox[{"0.2644331438827401`", " ", "log\[Alpha]"}]}]}], ",", 
+    RowBox[{"logM", "\[Rule]", 
+     RowBox[{
+      RowBox[{"-", "1.7377425466148169`"}], "+", 
+      RowBox[{"1.0780735865988635`", " ", "logL"}], "-", 
+      RowBox[{"0.9971083856815233`", " ", "logP"}], "+", 
+      RowBox[{"0.13951540532455878`", " ", "logZ"}], "-", 
+      RowBox[{"0.8244092132814838`", " ", "log\[Alpha]"}]}]}]}], "}"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.797720980115498*^9},
+ CellLabel->"Out[17]=",ExpressionUUID->"1507b162-c0e9-42d5-9f1f-f4207e5d8045"]
+}, Open  ]],
+
+Cell["This tells us the relations for logR and logM are", "Text",
+ CellChangeTimes->{{3.7977205160238905`*^9, 
+  3.797720545473689*^9}},ExpressionUUID->"42b013cd-12e9-4d45-9976-\
+e6df418ad553"],
+
+Cell["\<\
+logR = 0.4489\[VeryThinSpace]+0.345797 logL+0.309104 logP+0.0447502 \
+log(Z/Zsun)-0.264433 log(alpha)
+logM = -1.73774+1.07807 logL-0.997108 logP+0.139515 log(Z/Zsun)-0.824409 \
+log(alpha)\
+\>", "Text",
+ CellChangeTimes->{{3.7977205549382963`*^9, 3.7977205835583305`*^9}, {
+  3.7977206203141603`*^9, 3.797720667736801*^9}, {3.797720988104766*^9, 
+  3.7977210104010425`*^9}, {3.7977210838415265`*^9, 
+  3.797721085321746*^9}},ExpressionUUID->"19ed4126-39da-4491-a2fc-\
+5a6ba7cd5d1c"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1600, 817},
+WindowMargins->{{Automatic, -1608}, {Automatic, -8}},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 155, 3, 67, "Chapter",ExpressionUUID->"73654864-4cde-4594-9bbb-fa690116b1b8"],
+Cell[CellGroupData[{
+Cell[760, 29, 149, 3, 67, "Section",ExpressionUUID->"4c88c8ed-3efa-42f3-ac04-b3e47725085b"],
+Cell[CellGroupData[{
+Cell[934, 36, 166, 3, 53, "Subsection",ExpressionUUID->"3ffb9aa6-693d-4bd4-9d2e-a8c09b0a60a4"],
+Cell[1103, 41, 978, 23, 82, "Text",ExpressionUUID->"e5a32356-c9f5-43f6-8c42-dcb37c5221dd"],
+Cell[CellGroupData[{
+Cell[2106, 68, 651, 18, 28, "Input",ExpressionUUID->"fee2db81-7eda-4405-89ef-4e714479d42a"],
+Cell[2760, 88, 630, 15, 32, "Output",ExpressionUUID->"3a7fc1e7-2220-4ee4-8f58-19dfd34fb996"]
+}, Open  ]],
+Cell[3405, 106, 276, 7, 78, "Text",ExpressionUUID->"a95010ac-08dc-4bd1-80f2-6a752e18f041"],
+Cell[3684, 115, 151, 3, 28, "Input",ExpressionUUID->"c050ddec-6699-4866-b92b-718bfa57a960"],
+Cell[3838, 120, 904, 28, 34, "Text",ExpressionUUID->"2e7ebe31-787f-477c-aba3-525d0e4145ab"],
+Cell[4745, 150, 1092, 29, 128, "Text",ExpressionUUID->"79e0cf6e-cde3-4d68-9d62-666049c2114c"],
+Cell[CellGroupData[{
+Cell[5862, 183, 988, 28, 28, "Input",ExpressionUUID->"fbe733df-eb02-479a-a781-f7db68c05e4e"],
+Cell[6853, 213, 343, 7, 32, "Output",ExpressionUUID->"ad81663b-afed-43b0-804a-5af900f53d2e"]
+}, Open  ]],
+Cell[7211, 223, 252, 4, 34, "Text",ExpressionUUID->"4e141064-d093-4620-bd18-3bbe671bc937"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7500, 232, 161, 3, 53, "Subsection",ExpressionUUID->"b6c6c98c-d811-4c0b-a9e8-12ca879441bc"],
+Cell[7664, 237, 904, 28, 34, "Text",ExpressionUUID->"bc203e20-ce23-415f-b7c1-ecf44e238fd5"],
+Cell[8571, 267, 840, 22, 82, "Text",ExpressionUUID->"86f77d21-c306-4d4b-afbb-a52d304ad67a"],
+Cell[CellGroupData[{
+Cell[9436, 293, 707, 19, 28, "Input",ExpressionUUID->"0c0ab346-f56c-4ab6-849b-ff6ff38b4fd5"],
+Cell[10146, 314, 682, 16, 32, "Output",ExpressionUUID->"6684bc7a-0dcc-4414-bf91-c14f3eab4639"]
+}, Open  ]],
+Cell[10843, 333, 353, 8, 78, "Text",ExpressionUUID->"6abc225c-abec-4c58-a492-9c40a56fabdf"],
+Cell[11199, 343, 1382, 31, 128, "Text",ExpressionUUID->"f305c140-6658-4f79-9b13-5da2de107bb9"],
+Cell[CellGroupData[{
+Cell[12606, 378, 1094, 29, 28, "Input",ExpressionUUID->"74a0c861-2c22-4d58-95f5-7a5372d22e5b"],
+Cell[13703, 409, 370, 7, 32, "Output",ExpressionUUID->"646eda92-21ad-43ee-b38d-a54925d300af"]
+}, Open  ]],
+Cell[14088, 419, 299, 4, 34, "Text",ExpressionUUID->"ff934d4c-a9ec-4f11-a6e9-e634bbdb5752"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14436, 429, 198, 4, 67, "Section",ExpressionUUID->"22e5bee1-18c7-4222-b5fb-f22cc227e142"],
+Cell[CellGroupData[{
+Cell[14659, 437, 166, 3, 53, "Subsection",ExpressionUUID->"9902b42a-d6d1-477f-8c2f-fa822a2c3410"],
+Cell[14828, 442, 830, 21, 82, "Text",ExpressionUUID->"27023e07-1bf2-4047-a238-bb823964506a"],
+Cell[CellGroupData[{
+Cell[15683, 467, 650, 18, 28, "Input",ExpressionUUID->"e78859ff-4240-4ade-863a-eddc086b367e"],
+Cell[16336, 487, 630, 15, 32, "Output",ExpressionUUID->"010432fb-ad59-4d87-b983-4f35ecb4777e"]
+}, Open  ]],
+Cell[16981, 505, 329, 8, 78, "Text",ExpressionUUID->"b01317aa-7f89-4814-99c3-253710c7694b"],
+Cell[17313, 515, 970, 30, 34, "Text",ExpressionUUID->"b9dfb13d-5d94-4e58-a6ee-99517d4b05bb"],
+Cell[18286, 547, 1194, 29, 84, "Text",ExpressionUUID->"950ae7af-4910-4cae-85d1-e8759892fa30"],
+Cell[CellGroupData[{
+Cell[19505, 580, 990, 28, 28, "Input",ExpressionUUID->"41592982-f05b-4bf3-9f31-f850a4552eb8"],
+Cell[20498, 610, 328, 6, 32, "Output",ExpressionUUID->"479563d3-bf56-4900-9468-99d862662574"]
+}, Open  ]],
+Cell[20841, 619, 256, 4, 34, "Text",ExpressionUUID->"a358b8f9-e32e-45a5-bec0-44328a04eae4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21134, 628, 161, 3, 53, "Subsection",ExpressionUUID->"2fafa3d0-0e48-4358-a06d-d2b4a3d2f162"],
+Cell[21298, 633, 888, 22, 82, "Text",ExpressionUUID->"3c866395-46b4-4791-8cf8-10c79add0c93"],
+Cell[CellGroupData[{
+Cell[22211, 659, 676, 19, 28, "Input",ExpressionUUID->"605b7afd-8c1b-4bea-a5e2-0e40d4ca9c63"],
+Cell[22890, 680, 653, 15, 32, "Output",ExpressionUUID->"7baab901-d1f5-4a0b-9c2f-e506ba7ff74b"]
+}, Open  ]],
+Cell[23558, 698, 377, 8, 78, "Text",ExpressionUUID->"9d6a585b-8922-4c1c-8b51-47cf04bf8023"],
+Cell[23938, 708, 970, 30, 34, "Text",ExpressionUUID->"4869e9c4-3f87-479f-9256-1815d5bda279"],
+Cell[24911, 740, 1478, 33, 106, "Text",ExpressionUUID->"4f69c8d9-0dfe-4c4e-8431-c90cc09a936b"],
+Cell[CellGroupData[{
+Cell[26414, 777, 1092, 29, 28, "Input",ExpressionUUID->"9dade358-7166-4c15-b4da-d57b5dda2704"],
+Cell[27509, 808, 373, 7, 32, "Output",ExpressionUUID->"0b03c489-9cbc-462b-b45f-64b4c09dd5c9"]
+}, Open  ]],
+Cell[27897, 818, 298, 4, 34, "Text",ExpressionUUID->"40f7c6eb-8f5b-458b-8a42-1b6588aebe77"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28256, 829, 189, 3, 67, "Chapter",ExpressionUUID->"1ebd2f75-c4e1-4538-ad3e-da2be799e25d"],
+Cell[CellGroupData[{
+Cell[28470, 836, 149, 3, 67, "Section",ExpressionUUID->"05d86acf-866d-420f-9185-a2ac7f190aba"],
+Cell[CellGroupData[{
+Cell[28644, 843, 166, 3, 53, "Subsection",ExpressionUUID->"3dd6c63a-6795-412f-83da-b399fa266957"],
+Cell[28813, 848, 309, 7, 34, "Text",ExpressionUUID->"a72d776b-f828-4a49-872a-90d0c9faf8e6"],
+Cell[CellGroupData[{
+Cell[29147, 859, 224, 4, 28, "Input",ExpressionUUID->"aa09a148-16fb-4fd7-b5fd-30bc3f9b34f3"],
+Cell[29374, 865, 171, 3, 32, "Output",ExpressionUUID->"d0885675-4ca9-4e81-a2d6-df89f2196349"]
+}, Open  ]],
+Cell[29560, 871, 1044, 26, 56, "Text",ExpressionUUID->"cf009df4-df75-4de4-bd45-9aa88e3afff3"],
+Cell[30607, 899, 170, 3, 34, "Text",ExpressionUUID->"927fb68e-d33d-4d6a-bb28-9d5449860ceb"],
+Cell[CellGroupData[{
+Cell[30802, 906, 747, 20, 28, "Input",ExpressionUUID->"f7103339-4ee0-4759-8a0c-ca08ebc53881"],
+Cell[31552, 928, 789, 19, 32, "Output",ExpressionUUID->"5108bc16-b897-4072-aefe-ec72d3a87e24"]
+}, Open  ]],
+Cell[32356, 950, 193, 3, 34, "Text",ExpressionUUID->"56c66861-dd7e-46f0-9780-6364f49c6994"],
+Cell[32552, 955, 839, 24, 56, "Text",ExpressionUUID->"57a6d28a-fa6d-4169-81ac-24c7e5fd9dcb"],
+Cell[33394, 981, 168, 3, 34, "Text",ExpressionUUID->"39b5eae9-a937-4f05-b9d4-0bcecd513399"],
+Cell[CellGroupData[{
+Cell[33587, 988, 876, 24, 28, "Input",ExpressionUUID->"ec53da39-247b-41bc-8321-786f635dda09"],
+Cell[34466, 1014, 931, 20, 32, "Output",ExpressionUUID->"e269fe8a-98b0-41c0-a0c5-2116a8393947"]
+}, Open  ]],
+Cell[35412, 1037, 193, 3, 34, "Text",ExpressionUUID->"74df1c5b-dc2d-4663-af45-dfd9fa160751"],
+Cell[35608, 1042, 396, 7, 56, "Text",ExpressionUUID->"72d97a7f-7f6f-48ce-ac54-8a83d8ff8afc"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36041, 1054, 161, 3, 53, "Subsection",ExpressionUUID->"5fb721ef-b607-4035-9df4-bc3133a6133a"],
+Cell[36205, 1059, 279, 6, 34, "Text",ExpressionUUID->"74a72528-e764-47a1-9026-5511684532d1"],
+Cell[36487, 1067, 1216, 28, 78, "Text",ExpressionUUID->"1419adaf-ef55-45cc-9d76-1e7a9930f93f"],
+Cell[37706, 1097, 170, 3, 34, "Text",ExpressionUUID->"cc49d453-f32e-4fd2-8385-de0572320ab0"],
+Cell[CellGroupData[{
+Cell[37901, 1104, 742, 20, 28, "Input",ExpressionUUID->"7a67d453-5877-4302-9747-4f4a3ff63016"],
+Cell[38646, 1126, 750, 19, 89, "Output",ExpressionUUID->"1f319b41-80c7-43e7-b99e-4ecc897c1549"]
+}, Open  ]],
+Cell[39411, 1148, 193, 3, 34, "Text",ExpressionUUID->"236da54f-a756-4770-9400-1f59df0155a5"],
+Cell[39607, 1153, 442, 8, 56, "Text",ExpressionUUID->"c5679a49-3745-408a-96aa-f96f8e542714"],
+Cell[40052, 1163, 168, 3, 34, "Text",ExpressionUUID->"a8080819-0f19-4126-af4b-83845ed651f1"],
+Cell[CellGroupData[{
+Cell[40245, 1170, 776, 21, 28, "Input",ExpressionUUID->"c5bd6eed-af01-4412-ab89-89ac6965ce5d"],
+Cell[41024, 1193, 882, 19, 32, "Output",ExpressionUUID->"1507b162-c0e9-42d5-9f1f-f4207e5d8045"]
+}, Open  ]],
+Cell[41921, 1215, 193, 3, 34, "Text",ExpressionUUID->"42b013cd-12e9-4d45-9976-e6df418ad553"],
+Cell[42117, 1220, 491, 10, 56, "Text",ExpressionUUID->"19ed4126-39da-4491-a2fc-5a6ba7cd5d1c"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
